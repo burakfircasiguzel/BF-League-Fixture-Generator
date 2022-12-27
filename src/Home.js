@@ -109,7 +109,8 @@ const Home = () => {
     <div>
       <Card className="mt-3">
         <CardHeader>
-          <CardTitle>Create awesome League Fixtures 📋⚽🏀</CardTitle>
+          <CardTitle>Create awesome League Fixtures 📋⭐⚽🏀</CardTitle>
+          <CardTitle>and Get <b>PDF</b> Export 📁</CardTitle>
         </CardHeader>
         <CardBody>
           <div className='form-check form-switch mb-1'>

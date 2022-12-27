@@ -168,7 +168,7 @@ const FixtureGenerator = ({ teams, mix, rematch, mirror, randomize, ghostValue, 
                 })
             })
             doc.setTextColor('#e0d7d7');
-            doc.text('BF-Fixture', 14, 25)
+            doc.text('BF Fixture', 14, 25)
     
             doc.autoTable({
                 startY: 30,
