@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "BF Fixture",
+  "name": "BF Fixture | Create League Fixture & Get PDF Export",
   "icons": [
     {
       "src": "favicon.ico",

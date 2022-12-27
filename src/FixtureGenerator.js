@@ -3,7 +3,7 @@ import { Button, ButtonGroup, Card, CardBody, CardTitle, Row, Table } from 'reac
 import { jsPDF } from "jspdf";
 import 'jspdf-autotable';
 import { FileText } from 'react-feather';
-
+import moment from 'moment/moment';
 const FixtureGenerator = ({ teams, mix, rematch, mirror, randomize, ghostValue, weekValue, versusValue }) => {
 
 
@@ -139,48 +139,54 @@ const FixtureGenerator = ({ teams, mix, rematch, mirror, randomize, ghostValue, 
         //console.log('randomize:', randomize)
     }
 
-    
-        const handlePrint = () => {
-    
-            const doc = new jsPDF();
-            var body = [];
-            //const divider = '------------------------------------';
-            // const divider = '______________________';
-            const divider = '';
-            Object.keys(rounds).map((key, index) => {
-                let home, away;
-                Object.keys(rounds[key]).map((index2) => {
-                    const round = rounds[key][index2].split(seperator);
-                    home = round[0];
-                    away = round[1];
-                    body.push({
-                        home,
-                        vs: versusValue,
-                        away,
-                        week: index + 1
-                    })
-                })
+
+    const handlePrint = () => {
+
+        const doc = new jsPDF();
+        var body = [];
+        //const divider = '------------------------------------';
+        // const divider = '______________________';
+        const divider = '';
+        Object.keys(rounds).map((key, index) => {
+            let home, away;
+            Object.keys(rounds[key]).map((index2) => {
+                const round = rounds[key][index2].split(seperator);
+                home = round[0];
+                away = round[1];
                 body.push({
-                    home: divider,
-                    vs: divider,
-                    away: divider,
-                    week: divider
+                    home,
+                    vs: versusValue,
+                    away,
+                    week: index + 1
                 })
             })
-            doc.setTextColor('#e0d7d7');
-            doc.text('BF Fixture', 14, 25)
-    
-            doc.autoTable({
-                startY: 30,
-                head: [{ week: weekValue, home: 'Home', vs: versusValue, away: 'Away' }],
-                body: body,
+            body.push({
+                home: divider,
+                vs: divider,
+                away: divider,
+                week: divider
             })
-    
-            doc.save("BF-Fixture.pdf");
-    
-        }
-    
-   // const handlePrint = () => { }
+        })
+        doc.setTextColor('#e0d7d7');
+        doc.text('BF Fixture ', 14, 20);
+        doc.setFontSize(10);
+
+
+        const format1 = "YYYY-MM-DD HH:mm"
+        var time = moment().format(format1);;
+        doc.text('Created at: ' + time, 14, 25)
+
+        doc.autoTable({
+            startY: 30,
+            head: [{ week: weekValue, home: 'Home', vs: versusValue, away: 'Away' }],
+            body: body,
+        })
+
+        doc.save("BF-Fixture.pdf");
+
+    }
+
+    // const handlePrint = () => { }
 
     ///REVERSE
     //console.log('rounds end: ', rounds);

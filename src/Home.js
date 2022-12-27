@@ -18,7 +18,7 @@ import {
   Collapse,
 } from "reactstrap";
 import TodoList from "./TodoList";
-import TodoForm from "./TodoForm";
+import TodoForm, { focusOnAddField } from "./TodoForm";
 import { useState } from "react";
 import  FixtureGenerator  from "./FixtureGenerator";
 import { ArrowDown, ChevronsDown } from "react-feather";
@@ -61,12 +61,14 @@ const Home = () => {
   const handleDelete = (id) => {
     const delTodo = teams.filter((to) => to.id !== id);
     setTeams([...delTodo]);
+    focusOnAddField();
   };
 
   const handleEdit = (id) => {
     const editTodo = teams.find((i) => i.id === id);
     setTeam(editTodo.name);
     setEditId(id);
+    focusOnAddField();
   };
 
 
