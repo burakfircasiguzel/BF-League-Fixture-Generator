@@ -15,7 +15,7 @@ const TodoList = ({ todos, handleDelete, handleEdit, }) => {
 
       {todos.map((t, index) => (
         <ListGroupItem key={t.id} style={{ animation: stil }}  >
-          {t.name}    
+         <b>{index+1}.</b>  {t.name}    
           <ButtonGroup style={{ marginLeft: '10px' }}>
             <Button size='sm' color="warning" onClick={() => handleEdit(t.id)}>
               <Edit size='14' style={{ marginBottom: '' }} />

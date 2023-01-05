@@ -168,7 +168,7 @@ const FixtureGenerator = ({ teams, mix, rematch, mirror, randomize, ghostValue, 
             })
         })
         doc.setTextColor('#e0d7d7');
-        doc.text('BF Fixture ', 14, 20);
+        doc.text('BF Fixture | Fixture.website ', 14, 20);
         doc.setFontSize(10);
 
 

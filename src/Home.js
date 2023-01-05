@@ -109,10 +109,10 @@ const Home = () => {
 
   return (
     <div>
-      <Card className="mt-3">
+      <Card className="mt-2">
         <CardHeader>
-          <CardTitle>Create awesome League Fixtures 📋⭐⚽🏀</CardTitle>
-          <CardTitle>and Get <b>PDF</b> Export 📁</CardTitle>
+          <CardTitle>Create Awesome League Fixtures 📋⭐⚽🏀</CardTitle>
+          <CardTitle>and Get Export as <b>PDF</b> File 📁</CardTitle>
         </CardHeader>
         <CardBody>
           <div className='form-check form-switch mb-1'>
@@ -126,7 +126,7 @@ const Home = () => {
           <div className='form-check form-switch mb-1'>
             <Input style={{marginTop: '10px'}} className="" type='switch' name='mix' id='mix' defaultChecked onChange={handleMix} />
             <Label  size="6" for='mix' className='form-check-label'>
-              Equals Match Count <small><i>Home & Away games be evenly distributed</i></small>
+            Equal Number of Matches <small><i>Home & Away games be evenly distributed</i></small>
             </Label>
           </div>
 
@@ -172,7 +172,7 @@ const Home = () => {
             editId={editId}
              setTodo={setTeam}
           />
-           {teams.length  > 0 ? <div><small><i>Team count: </i></small><b>{teams.length}</b></div> : ''}
+           {teams.length  > 0 ? <div><small><i>Number of Teams: </i></small><b>{teams.length}</b></div> : ''}
 
           <TodoList
             todos={teams}

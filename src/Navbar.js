@@ -7,7 +7,7 @@ const Navbar = () => {
         <Card className='mt-2'>
             <CardBody>
                 <CardText>
-                    <b>BF Fixture 🚀</b>
+                    <b>BF Fixture | Fixture.website 🚀</b>
                 </CardText>
             </CardBody>
         </Card>
