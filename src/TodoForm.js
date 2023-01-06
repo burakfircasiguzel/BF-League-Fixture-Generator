@@ -35,7 +35,7 @@ const TodoForm = ({ handleSubmit, todo, editId, setTodo }) => {
           className="animate__fadeInLeft "
         />
         
-        <Button onClick={handleSubmit} color={editId ? "warning" : "success"} type="submit"> {editId ? "Edit" : "Add"}</Button>
+        <Button onClick={handleSubmit} color={editId ? "warning" : "primary"} type="submit"> {editId ? "Edit" : "Add"}</Button>
       </InputGroup>
       <small><i>You can press <b>Enter Key</b> to add easily</i></small>
     </div>

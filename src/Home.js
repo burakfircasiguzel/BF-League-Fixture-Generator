@@ -180,10 +180,7 @@ const Home = () => {
             handleDelete={handleDelete}
            />
 
-          <Row>
-            <ButtonGroup><Button color="primary" onClick={handleCreateFixture}>Create Fixture</Button></ButtonGroup>
-          </Row>
-          {fixtureButton && <FixtureGenerator teams={teams} rematch={rematch} mix={mix} randomize={randomize} ghostValue={ghostValue} weekValue={weekValue} versusValue={versusValue} />}
+          <FixtureGenerator teams={teams} rematch={rematch} mix={mix} randomize={randomize} ghostValue={ghostValue} weekValue={weekValue} versusValue={versusValue} />
 
         </CardBody>
       </Card>
