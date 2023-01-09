@@ -3,24 +3,15 @@ import {
   CardHeader,
   CardBody,
   CardTitle,
-  CardText,
-  CardLink,
-  Row,
   Label,
-  Col,
   Input,
-  Table,
-  ListGroup,
-  ListGroupItem,
   Button,
-  ButtonGroup,
-  InputGroup,
   Collapse,
 } from "reactstrap";
-import TodoList from "./TodoList";
-import TodoForm, { focusOnAddField } from "./TodoForm";
+import TodoList from "./List";
+import TodoForm, { focusOnAddField } from "./Input";
 import { useState } from "react";
-import  FixtureGenerator  from "./FixtureGenerator";
+import  FixtureGenerator  from "../utils/FixtureGenerator";
 import { ArrowDown, ChevronsDown } from "react-feather";
 const Home = () => {
 
@@ -34,7 +25,6 @@ const Home = () => {
   const [weekValue, setWeekValue] = useState('Week');
   const [versusValue, setVersusValue] = useState('VS');
   const [isOpen, setIsOpen] = useState(false)
-  const [fixtureButton, setFixtureButton] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -72,9 +62,7 @@ const Home = () => {
   };
 
 
-  const handleCreateFixture = () => {
-    setFixtureButton(true);
-  }
+
 
   const handleRematch = () => {
     setRematch(!rematch);

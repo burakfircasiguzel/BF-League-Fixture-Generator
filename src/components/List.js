@@ -1,14 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
-import { Edit, Home, Trash } from "react-feather";
+import { Edit, Trash } from "react-feather";
 import { Button, ButtonGroup, ListGroup, ListGroupItem } from "reactstrap";
 
 const TodoList = ({ todos, handleDelete, handleEdit, }) => {
-  const duration = 1500; // ms
+  const duration = 1500; // effect duration
   const [stil, setStil] = useState(`fadeIn ${duration}ms ease-out forwards`);
-
-
-
 
   return (
     <ListGroup  className='mb-2 mt-2 '>

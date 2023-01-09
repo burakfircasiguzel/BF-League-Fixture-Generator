@@ -7,56 +7,49 @@ import moment from 'moment/moment';
 const FixtureGenerator = ({ teams, mix, rematch, mirror, randomize, ghostValue, weekValue, versusValue }) => {
 
 
-
+    // Example team data
+    /*
     let players = [
         {
-            name: 'Fenerbahce',
+            name: 'Manchester City',
             uid: '1'
         },
         {
-            name: 'Galatasaray',
+            name: 'Chelsea',
             uid: '2'
         },
         {
-            name: 'Besiktas',
+            name: 'Manchester UTD',
             uid: '3'
-        }
-        ,
+        },
         {
-            name: 'Trabzonspor',
+            name: 'Arsenal',
             uid: '4'
         },
         {
-            name: 'Basaksehir',
+            name: 'Tottenham',
             uid: '5'
         },
         {
-            name: 'Konyaspor',
+            name: 'Liverpool',
             uid: '6'
         },
         {
-            name: 'Sivasspor',
+            name: 'Westham United',
             uid: '7'
         }
-
-
     ]
-
-    //mix = false;
-    //returnMatch = true;
+    */
     mirror = true;
-    //players = players.reverse()
-    players = teams;
-    const seperator = '$$$$';
+    let players = teams;
+    const seperator = '$$$$'; // seperator
 
     // Find out how many teams we want fixtures for
     let numberPlayers = players.length
     let realNumberPlayers = players.length;
     // If odd number of players add a "ghost".
-    let ghost = false
-    if (numberPlayers % 2 == 1) {
+    if (numberPlayers % 2 === 1) {
         numberPlayers++
-        ghost = true
     }
 
     // Generate the fixtures using the cyclic algorithm.
@@ -71,7 +64,7 @@ const FixtureGenerator = ({ teams, mix, rematch, mirror, randomize, ghostValue, 
             let away = (numberPlayers - 1 - match + round) % (numberPlayers - 1)
             // Last player stays in the same place while the others
             // rotate around it.
-            if (match == 0) {
+            if (match === 0) {
                 away = numberPlayers - 1
             }
             // Add one so players are number 1 to players not 0 to players - 1
@@ -82,13 +75,13 @@ const FixtureGenerator = ({ teams, mix, rematch, mirror, randomize, ghostValue, 
     }
 
     // Interleave so that home and away games are fairly evenly dispersed.
-    //Mixed
+    // Mixed
     if (mix) {
         let interleaved = {}
         let evn = 0;
         let odd = (numberPlayers / 2)
         for (let i = 0; i < totalRounds; i++) {
-            if (i % 2 == 0) {
+            if (i % 2 === 0) {
                 interleaved[i] = rounds[evn++]
             } else {
                 interleaved[i] = rounds[odd++]
@@ -99,9 +92,8 @@ const FixtureGenerator = ({ teams, mix, rematch, mirror, randomize, ghostValue, 
 
     // Last team can't be away for every game so flip them
     // to home on odd rounds.
-
     for (let round = 0; round < totalRounds; round++) {
-        if (round % 2 == 1 && !rounds[round][0].includes(ghostValue)) {
+        if (round % 2 === 1 && !rounds[round][0].includes(ghostValue)) {
             rounds[round][0] = flip(rounds[round][0])
         }
     }
@@ -112,7 +104,6 @@ const FixtureGenerator = ({ teams, mix, rematch, mirror, randomize, ghostValue, 
 
 
     ///REVERSE
-    //console.log(totalRounds);
     if (rematch) {
         let count = totalRounds;
         for (let round = 0; round < totalRounds; round++) {
@@ -122,30 +113,42 @@ const FixtureGenerator = ({ teams, mix, rematch, mirror, randomize, ghostValue, 
                 let away = (numberPlayers - 1 - match + round) % (numberPlayers - 1)
                 // Last player stays in the same place while the others
                 // rotate around it.
-                if (match == 0) {
+                if (match === 0) {
                     away = numberPlayers - 1
                 }
                 // Add one so players are number 1 to players not 0 to players - 1
                 // upon display.
                 if (!rounds[count + totalRounds]) rounds[count + totalRounds] = {}
                 rounds[count + totalRounds][match] = ((away + 1) === realNumberPlayers + 1 ? ghostValue : players[(away)]?.name) + seperator + (players[(home)].name)
-                //console.log("match:", count, totalRounds, rounds[count + totalRounds][match], home, away)
             }
         }
     }
 
     if (randomize) {
         shuffle(rounds);
-        //console.log('randomize:', randomize)
     }
 
+    function shuffle(sourceArray) {
+        let arrLength = 0;
+        Object.keys(sourceArray).map((key, index) => {
+            arrLength++;
+        })
+
+        console.log()
+    
+    
+        for (var i = 0; i < arrLength - 1; i++) {
+            var j = i + Math.floor(Math.random() * (arrLength - i));
+            var temp = sourceArray[j];
+            sourceArray[j] = sourceArray[i];
+            sourceArray[i] = temp;
+        }
+    }
 
     const handlePrint = () => {
 
         const doc = new jsPDF();
         var body = [];
-        //const divider = '------------------------------------';
-        // const divider = '______________________';
         const divider = '';
         Object.keys(rounds).map((key, index) => {
             let home, away;
@@ -186,11 +189,7 @@ const FixtureGenerator = ({ teams, mix, rematch, mirror, randomize, ghostValue, 
 
     }
 
-    // const handlePrint = () => { }
-
-    ///REVERSE
-    //console.log('rounds end: ', rounds);
-    //console.log('asd: ', rounds[1]);
+    //console.log('rounds: ', rounds);
     return (
         <div>
             {teams.length > 0 ? <Row className='mt-1'>
@@ -234,24 +233,7 @@ const FixtureGenerator = ({ teams, mix, rematch, mirror, randomize, ghostValue, 
     )
 }
 
-function shuffle(sourceArray) {
-    let arrLength = 0;
-    Object.keys(sourceArray).map((key, index) => {
-        arrLength++;
-    })
 
-
-    for (var i = 0; i < arrLength - 1; i++) {
-        var j = i + Math.floor(Math.random() * (arrLength - i));
-        var temp = sourceArray[j];
-        sourceArray[j] = sourceArray[i];
-        sourceArray[i] = temp;
-    }
-
-
-
-
-}
 
 FixtureGenerator.defaultProps = {
     ghostValue: 'BYE',
