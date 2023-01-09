@@ -14,6 +14,7 @@
 
 ```
 npm install
+npm start
 ```
 
   
