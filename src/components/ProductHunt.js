@@ -6,7 +6,7 @@ const ProductHunt = () => {
         <Card className='mt-2'>
             <CardBody>
                 <CardText>
-                    🎈 We are currently at the launch of Product Hunt. <a href='https://www.producthunt.com/' target='_blank'>Upvote 🔼</a>
+                    🎈 We are currently at the launch on Product Hunt. <a href='https://www.producthunt.com/posts/fixture-website' rel="noreferrer" target='_blank'>Upvote 🔼</a>
                 </CardText>
             </CardBody>
         </Card>
